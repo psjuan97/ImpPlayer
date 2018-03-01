@@ -1,16 +1,17 @@
 # ImpvPlayer
 Imperium Player repo
 
+Para el desarollo estoy usando codelite pero en realidad no es necesario.
+
+Crea un WorkSpace de c++ en codelite
+
+haz clone dentro de el
 ```
 $ git clone https://github.com/psjuan97/ImpPlayer.git
 ```
-Para el desarollo estoy usando codelite pero en realidad no es necesario.
-
-Crea un WorkSpace de c++ en codelite, e importa el proyecto
-"Add an existing project"
+Añade el proyecto desde codelite "Add an existing project" 
 
 Un vez cargado tendremos una ventan asi:
-
 
 Ahora hay que generar el makefile usando CMAKE
 <img src="https://i.imgur.com/RiBCvi7.png">
