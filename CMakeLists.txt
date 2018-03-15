@@ -11,13 +11,13 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
 project(${PROJECT_NAME})
 
 #Bring the headers, such as Student.h into the project
-include_directories(include)
+include_directories("include" "include/Render" "include/Utils")
 
 include_directories("lib/spdlog")
 
 
 ## Use all the *.cpp files we found under this folder for the project
-FILE(GLOB SRCS "src/*.cpp")
+FILE(GLOB SRCS "src/*.cpp" "src/Render/*.cpp"  "src/Utils/*.cpp" )
 
 ## Define the executable
 add_executable(${PROJECT_NAME} ${SRCS})

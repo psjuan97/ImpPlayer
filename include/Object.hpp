@@ -5,9 +5,13 @@
  * @brief A small object class
  */
 class Object{
+private:
+	int _x;
+	int _y;
+    
 public:
 	Object();
-	int x;
-	int y;
+    Object(int x,int y);
+
 
 };

@@ -8,16 +8,33 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <VirtualDirectory Name="Utils">
+      <File Name="src/Utils/Clock.cpp"/>
+      <File Name="src/Utils/Log.cpp"/>
+    </VirtualDirectory>
     <File Name="src/Object.cpp"/>
     <File Name="src/main.cpp"/>
-    <File Name="src/Core.cpp"/>
+    <File Name="src/Game.cpp"/>
+    <VirtualDirectory Name="Render">
+      <File Name="src/Render/RendererEngine.cpp"/>
+      <File Name="src/Render/WRendererSFML.cpp"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <VirtualDirectory Name="resources">
     <File Name="CMakeLists.txt"/>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
+    <VirtualDirectory Name="Utils">
+      <File Name="include/Utils/Clock.hpp"/>
+      <File Name="include/Utils/Log.hpp"/>
+    </VirtualDirectory>
     <File Name="include/Object.hpp"/>
-    <File Name="include/Core.hpp"/>
+    <File Name="include/Game.hpp"/>
+    <VirtualDirectory Name="Render">
+      <File Name="include/Render/RendererEngine.hpp"/>
+      <File Name="include/Render/WRendererSFML.hpp"/>
+      <File Name="include/Render/WRenderer.hpp"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
@@ -35,7 +52,7 @@
       </Compiler>
       <Linker Options="" Required="yes"/>
       <ResourceCompiler Options="" Required="no"/>
-      <General OutputFile="" IntermediateDirectory="./Debug" Command="$(WorkspacePath)/$(ProjectName)/bin/$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(WorkspacePath)/$(ProjectName)/bin/" PauseExecWhenProcTerminates="no" IsGUIProgram="no" IsEnabled="yes"/>
+      <General OutputFile="" IntermediateDirectory="./Debug" Command="$(WorkspacePath)/$(ProjectName)/bin/$(ProjectName)" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(WorkspacePath)/$(ProjectName)/bin/" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
       <BuildSystem Name="CMake"/>
       <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
         <![CDATA[]]>
