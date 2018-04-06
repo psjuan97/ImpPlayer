@@ -13,7 +13,7 @@ namespace impvm
 
 class Log
 {
-private:
+public:
     static std::shared_ptr<spd::logger> console;
 public:
     static void info(std::string text);    

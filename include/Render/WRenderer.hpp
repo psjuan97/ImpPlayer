@@ -12,9 +12,10 @@ public:
     virtual void clear() = 0;
 
     virtual void destroy() = 0;
-    virtual void renderObject(const Object obj) = 0;
+    virtual void drawObject(Object* str)=0 ;
     virtual void drawText(std::string str) = 0;
 
+    virtual bool ready() = 0;
    // virtual ~WRenderer();
 //    sf::Text FPS("0", sf::Font::GetDefaultFont(), 25);
 

@@ -30,15 +30,16 @@ if(_window != nullptr){
 
 void WRendererSFML::update()
 {
-        
-
-        sf::Event event;
-        while (_window->pollEvent(event))
-        {
-            // Close window: exit
-            if (event.type == sf::Event::Closed)
-                _window->close();
+    sf::Event event;
+    while (_window->pollEvent(event))
+    {
+        // Close window: exit
+        if (event.type == sf::Event::Closed){
+            _ready = false;
+            _window->close();     
         }
+
+    }
 
 
 
@@ -62,10 +63,13 @@ void WRendererSFML::destroy()
     
 }
 
-void WRendererSFML::renderObject(const Object obj)
-{
-    
-    
+void WRendererSFML::drawObject(Object* str){
+   sf::IntRect rectangulo = sf::IntRect(str->_rect->x, str->_rect->y, str->_rect->w, str->_rect->h);
+   
+    str->getSheet()->_baseSheet->setTextureRect(rectangulo);
+    _window->draw( *str->getSheet()->_baseSheet);
+
+
 }
 
 
@@ -76,6 +80,10 @@ void WRendererSFML::drawText(std::string str){
 
     _window->draw( text);
 
-    
 
+}
+
+
+bool WRendererSFML::ready(){
+    return _ready;    
 }

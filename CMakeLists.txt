@@ -14,10 +14,11 @@ project(${PROJECT_NAME})
 include_directories("include" "include/Render" "include/Utils")
 
 include_directories("lib/spdlog")
+include_directories("lib/tinyxml2")
 
 
 ## Use all the *.cpp files we found under this folder for the project
-FILE(GLOB SRCS "src/*.cpp" "src/Render/*.cpp"  "src/Utils/*.cpp" )
+FILE(GLOB SRCS "src/*.cpp" "src/Render/*.cpp"  "src/Utils/*.cpp" "lib/tinyxml2/tinyxml2.cpp")
 
 ## Define the executable
 add_executable(${PROJECT_NAME} ${SRCS})

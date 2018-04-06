@@ -19,38 +19,15 @@ int main(int argc, char* argv[]) {
     
     Game* myGame = Game::Instance();
 
+//    Object *elt = new Object("IELITEGUARD/IELITEGUARD.ENT.XML");
 
+    Object *gld = new Object("RGLADIATOR/RGLADIATOR.ENT.XML");
+    myGame->objects.push_back(*gld);
+    //   myGame->objects.push_back(*elt);
 
-    
-    Log::info("Ejemplo de info");
-    Log::warn("Ejemplo de warning");
-    Log::error("Ejemplo de error ");
-    
     myGame->loop();
 
+    
+    Log::info("END");
 }
 
-/*
-    const int TICKS_PER_SECOND = 50;
-    const int SKIP_TICKS = 1000 / TICKS_PER_SECOND;
-    const int MAX_FRAMESKIP = 10;
-
-    DWORD next_game_tick = GetTickCount();
-    int loops;
-
-    bool game_is_running = true;
-    while( game_is_running ) {
-
-        loops = 0;
-        while( GetTickCount() > next_game_tick && loops < MAX_FRAMESKIP) {
-            update_game();
-
-            next_game_tick += SKIP_TICKS;
-            loops++;
-        }
-
-        display_game();
-    }
-
-
-*/

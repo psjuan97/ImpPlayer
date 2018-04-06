@@ -5,18 +5,19 @@
 
 class WRendererSFML: public WRenderer{ 
 public:
-void init();
-void update();
-void destroy();
-void renderObject(const Object obj);
-void drawText(std::string str) ;
+    void init();
+    void update();
+    void destroy();
+    void drawText(std::string str) ;
+    void drawObject(Object* str) ;
 
-     void flush();
-     void clear();
+    void flush();
+    void clear();
 
+    bool ready();
 private:
-sf::RenderWindow* _window;
-sf::Font* _font;
-
+    sf::RenderWindow* _window;
+    sf::Font* _font;
+    bool _ready = true;
 
 };

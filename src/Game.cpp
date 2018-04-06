@@ -59,24 +59,40 @@ void impvm::Game::loop(){
     
     uint32_t lastTime = 0;
             
-    while(game_is_running){
-        
+
+    objects[0].setStatus("walk");
+    
+
+int c = 0;
+
+    while(engine->ready() ){
+
         engine->clear();
         
         update();
-    
+        
 
         uint32_t currentTime = fpsClk.getPassedTime(); 
         uint32_t fps = 1000.f / (currentTime - lastTime);
         lastTime = currentTime;            
         engine->drawText("FPS: " + std::to_string(fps));
         
+        for(int i=0; i<objects.size();i++){
+            engine->drawObject(&objects[i]);
+            
+            
+          //  if(c == 100){
+                objects[i].Play();
+                c = 0;
+            //}
+            c++;
+            
+        }
         
         engine->flush();
         
+        
     }
    
-    
-    
-    
+   
 }

@@ -8,6 +8,7 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
+    <File Name="src/Animation.cpp"/>
     <VirtualDirectory Name="Utils">
       <File Name="src/Utils/Clock.cpp"/>
       <File Name="src/Utils/Log.cpp"/>
@@ -16,6 +17,7 @@
     <File Name="src/main.cpp"/>
     <File Name="src/Game.cpp"/>
     <VirtualDirectory Name="Render">
+      <File Name="src/Render/SpriteSheet.cpp"/>
       <File Name="src/Render/RendererEngine.cpp"/>
       <File Name="src/Render/WRendererSFML.cpp"/>
     </VirtualDirectory>
@@ -24,13 +26,16 @@
     <File Name="CMakeLists.txt"/>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
+    <File Name="include/Animation.hpp"/>
     <VirtualDirectory Name="Utils">
+      <File Name="include/Utils/Rect.hpp"/>
       <File Name="include/Utils/Clock.hpp"/>
       <File Name="include/Utils/Log.hpp"/>
     </VirtualDirectory>
     <File Name="include/Object.hpp"/>
     <File Name="include/Game.hpp"/>
     <VirtualDirectory Name="Render">
+      <File Name="include/Render/SpriteSheet.hpp"/>
       <File Name="include/Render/RendererEngine.hpp"/>
       <File Name="include/Render/WRendererSFML.hpp"/>
       <File Name="include/Render/WRenderer.hpp"/>
