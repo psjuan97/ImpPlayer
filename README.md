@@ -20,3 +20,13 @@ Y ya tendremos el proyecto listo para compilar y ejecutar
 
 
 Ten encuenta que en necesario que tengas instalado SFML
+
+
+Tareas:
+Sistema de capas, para dar soporte a las sombras
+Mejora de animaciones, mirar XML, velocidad FRAME a FRAME
+Factoria para generar objectos (unidades)
+Controles del raton
+Sistema de direcciones, para cambiar las animaciones, arriba, abajo, derecha etc 
+
+
