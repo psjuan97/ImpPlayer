@@ -13,6 +13,9 @@
  */
 class Object{
 public:
+    int y;
+    int x;
+    
     std::string _folder;
     Rect *_rect;
     SpriteSheet *_sheet;
@@ -24,10 +27,10 @@ public:
    // std::vector<SpriteSheet> _Images;  
     std::unordered_map<int,SpriteSheet> _Images;
 
-    void Play();
+    void Play(uint32_t time);
 public:
     void setStatus(std::string status);
-	Object(std::string filename);
+	Object(std::string filename, int x, int y);
     Object(int x, int y, int w, int h);
     SpriteSheet* getSheet(){return _sheet;};
     Rect* getRect(){return _rect;};

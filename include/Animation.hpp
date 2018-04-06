@@ -38,6 +38,7 @@ public:
         
     };
     SpriteSheet* getImage(){return _image;};
+    uint32_t _lastTime;
 
     Animation();
     ~Animation();

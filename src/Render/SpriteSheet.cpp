@@ -20,8 +20,11 @@ void SpriteSheet::generateRects(){
             Rect tmp;
             tmp.h = (height- (rows - 1))/rows ;
             tmp.w = (width - (columns - 1))/columns;
-            tmp.x = i * tmp.h + (rows + 1) *i;
-            tmp.y = j * tmp.w + (columns +1)*j;//tmp.y = j * tmp.w + (columns -7)*j;
+            tmp.x = i * tmp.w + (rows + 1) *i;
+            tmp.y = j * (tmp.h +1) ;//j * tmp.w + (columns +1)*j;//tmp.y = j * tmp.w + (columns -7)*j;
+            
+        //    Log::console->info("tmp.h: {}", tmp.h);
+       //     Log::console->info("tmp.y: {}", tmp.y);
             _mold[i].push_back(tmp);
 
         }

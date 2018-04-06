@@ -52,16 +52,17 @@ void impvm::Game::loop(){
 
 	
     Clock fpsClk = Clock();
+    Clock animClk = Clock();
 
     bool game_is_running = true; 
     
-
-    
     uint32_t lastTime = 0;
             
-
     objects[0].setStatus("walk");
-    
+    objects[1].setStatus("Attack");
+    objects[2].setStatus("Die");
+   // objects[0].setStatus("Idle");
+
 
 int c = 0;
 
@@ -78,13 +79,16 @@ int c = 0;
         engine->drawText("FPS: " + std::to_string(fps));
         
         for(int i=0; i<objects.size();i++){
+            Log::console->info("---Draw: ");
+
             engine->drawObject(&objects[i]);
             
-            
-          //  if(c == 100){
-                objects[i].Play();
+          /// if(c == 100){
+                          Log::console->info("---Play: ");
+
+                objects[i].Play(currentTime);
                 c = 0;
-            //}
+           // }
             c++;
             
         }

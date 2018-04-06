@@ -5,13 +5,17 @@
 using namespace tinyxml2;
 using namespace impvm;
 
-void Object::Play(){
+void Object::Play(uint32_t time){
     
-    //si ha pasado tiempo suficiente next frame
+    if (time - _animations[_status]._lastTime >= _animations[_status].getVelocity() )
+    {
+        //si ha pasado tiempo suficiente next frame
     this->_animations[_status].nextFrame();
     _rect = _animations[_status].getActualFrame();
+    _animations[_status]._lastTime = time;
+   // Log::console->info(_animations[_status].getIFrame());
+    }
 
-    Log::console->info(_animations[_status].getIFrame());
     
 }
 
@@ -28,11 +32,12 @@ void Object::setStatus(std::string status){
  * @brief Default Construcor of Object
  * @return nice object with x and y set to 0
  */
-Object::Object(std::string filename){
-    
+Object::Object(std::string filename, int x, int y){
+
+this->x = x;
+this->y = y;
 
 _folder = filename.substr(0, filename.find_last_of('/') +1);
-
 
     Log::console->info("    FOLDER: {} " ,_folder);
 
@@ -44,7 +49,7 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
     //std::unordered_map<std::string,std::string> mymap;
 
     for (const XMLElement* child = classElem->FirstChildElement(); child!=0; child=child->NextSiblingElement()){
-        SpriteSheet Tmpsheet = SpriteSheet();    
+    SpriteSheet Tmpsheet = SpriteSheet();    
 
     
     
@@ -79,18 +84,47 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
         
     }
     
-    
-    //Animations load
-    Animation tmpAnim = Animation();
-    tmpAnim.setVelocity(10);
-    tmpAnim.setImage(&_Images[3]);
-    tmpAnim.setFrames(&_Images[3]._mold[0]); // el 0 se cambiara segun el sentido/orientacion
-    
-    _animations["walk"] = tmpAnim;
+    classElem = doc.FirstChildElement("entity")->FirstChildElement("anims");
 
-   
+        Log::console->info("---------------Animations--------------" );
+
+    for (const XMLElement* child = classElem->FirstChildElement(); child!=0; child=child->NextSiblingElement()){
+        std::string name;
+        name = child->Attribute("name");
+        Log::console->info("name: {} " , name);
+
+        //Animations load
+        Animation tmpAnim = Animation();
+        tmpAnim.setVelocity(66);
+
+
+        for (const XMLElement* subChild = child->FirstChildElement(); subChild!=0; subChild=subChild->NextSiblingElement()){
+        //replace and frame
+            Log::console->info("subChild->Name(): {} " , subChild->Name());
+
+            if(std::string("replace").compare( subChild->Name()) == 0 ){
+                 Log::console->info("Enter " );
+                int imageID;
+                subChild->QueryIntAttribute("image", &imageID);
+                Log::console->info("image: {} " , imageID);
+                
+                tmpAnim.setImage(&_Images[imageID]);
+                tmpAnim.setFrames(&_Images[imageID]._mold[0]); // el 0 se cambiara segun el sentido/orientacion
     
+                break;
+            }
+        
+
+
+        }
+        
+        _animations[name] = tmpAnim;
+        setStatus(name);
     
+
+    }
+    
+
     
 }
 

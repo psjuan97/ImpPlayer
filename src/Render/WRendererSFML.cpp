@@ -64,9 +64,14 @@ void WRendererSFML::destroy()
 }
 
 void WRendererSFML::drawObject(Object* str){
+     //   Log::console->info("Drawing {:p}", (void*)str );
+    //    Log::console->info("Rect {:p}", (void*)str->_rect );
+
+    Log::console->info("x {}",str->x );
    sf::IntRect rectangulo = sf::IntRect(str->_rect->x, str->_rect->y, str->_rect->w, str->_rect->h);
-   
+
     str->getSheet()->_baseSheet->setTextureRect(rectangulo);
+    str->getSheet()->_baseSheet->setPosition((float)str->x, (float)str->y); //change place, very slow
     _window->draw( *str->getSheet()->_baseSheet);
 
 
