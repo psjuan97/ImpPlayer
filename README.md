@@ -30,5 +30,6 @@ Controles del raton<br>
 Sistema de direcciones, para cambiar las animaciones, arriba, abajo, derecha etc <br>
 Propiedades dinamicas XML, MAP <br>
 Tipo de datos nativos(¿que leo del xml, float int string?)<br>
-Cambiar XML, ent -> sc
+Cambiar XML, ent -> sc <br>
+Moviento basado en vectores
 
