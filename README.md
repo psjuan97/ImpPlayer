@@ -22,11 +22,13 @@ Y ya tendremos el proyecto listo para compilar y ejecutar
 Ten encuenta que en necesario que tengas instalado SFML
 
 
-Tareas:
-Sistema de capas, para dar soporte a las sombras
-Mejora de animaciones, mirar XML, velocidad FRAME a FRAME
-Factoria para generar objectos (unidades)
-Controles del raton
-Sistema de direcciones, para cambiar las animaciones, arriba, abajo, derecha etc 
-
+## Tareas:
+Sistema de capas, para dar soporte a las sombras<br>
+Mejora de animaciones, mirar XML, velocidad FRAME a FRAME<br>
+Factoria para generar objectos (unidades)<br>
+Controles del raton<br>
+Sistema de direcciones, para cambiar las animaciones, arriba, abajo, derecha etc <br>
+Propiedades dinamicas XML, MAP <br>
+Tipo de datos nativos(¿que leo del xml, float int string?)<br>
+Cambiar XML, ent -> sc
 
