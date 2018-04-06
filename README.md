@@ -33,3 +33,5 @@ Tipo de datos nativos(¿que leo del xml, float int string?)<br>
 Cambiar XML, ent -> sc <br>
 Moviento basado en vectores
 
+## Info
+https://blog.redbluegames.com/animating-top-down-2d-games-in-unity-5e966b81790e -> Direcciones <br>
