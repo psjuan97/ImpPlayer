@@ -61,10 +61,20 @@ void impvm::Game::loop(){
     objects[0].setStatus("walk");
     objects[1].setStatus("Attack");
     objects[2].setStatus("Die");
+    
+        
+    objects[0].setDirection(Orientation::SOUTH);
+    objects[1].setDirection(Orientation::NORTH);
+    objects[2].setDirection(Orientation::NORTHEAST);
+
+
+    Vector destiny(400,400);
+
+    objects[0]._movements.push(destiny);
    // objects[0].setStatus("Idle");
 
 
-int c = 0;
+    int c = 0;
 
     while(engine->ready() ){
 
@@ -87,9 +97,11 @@ int c = 0;
                           Log::console->info("---Play: ");
 
                 objects[i].Play(currentTime);
-                c = 0;
+               // c = 0;
            // }
-            c++;
+           // c++;
+           
+           objects[i].Action();
             
         }
         

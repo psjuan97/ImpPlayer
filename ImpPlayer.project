@@ -26,8 +26,10 @@
     <File Name="CMakeLists.txt"/>
   </VirtualDirectory>
   <VirtualDirectory Name="include">
+    <File Name="include/Orientation.hpp"/>
     <File Name="include/Animation.hpp"/>
     <VirtualDirectory Name="Utils">
+      <File Name="include/Utils/Vector.hpp"/>
       <File Name="include/Utils/Rect.hpp"/>
       <File Name="include/Utils/Clock.hpp"/>
       <File Name="include/Utils/Log.hpp"/>

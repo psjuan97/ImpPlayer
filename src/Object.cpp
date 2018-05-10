@@ -20,6 +20,18 @@ void Object::Play(uint32_t time){
 }
 
 
+void Object::Action(){ // TODO change to pointer
+    int speed = 5;
+    
+    //Vector tmpMovement = _movements.push();
+    
+    
+    
+    
+}
+
+
+
 void Object::setStatus(std::string status){
     _status = status;
     //buscar la animacion correspondiente y asignar
@@ -109,7 +121,7 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
                 Log::console->info("image: {} " , imageID);
                 
                 tmpAnim.setImage(&_Images[imageID]);
-                tmpAnim.setFrames(&_Images[imageID]._mold[0]); // el 0 se cambiara segun el sentido/orientacion
+                tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]); // el 0 se cambiara segun el sentido/orientacion
     
                 break;
             }
@@ -130,4 +142,10 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
 
 }
 
-
+void Object::setDirection(Orientation direction) // TODO posible fix new direction direct to SetFrames
+{
+    this->_direction = direction; 
+    std::vector<Rect> *newDirection = &_animations[_status].getImage()->_mold[(int)direction];
+    _animations[_status].setFrames(newDirection);
+    //tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]);
+}

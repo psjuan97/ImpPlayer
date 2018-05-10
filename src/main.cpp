@@ -21,6 +21,7 @@ int main(int argc, char* argv[]) {
     Object *def = new Object("IDEFENDER/IDEFENDER.ENT.XML",0,0);
     Object *elt = new Object("IELITEGUARD/IELITEGUARD.ENT.XML",200,100);
     Object *gld = new Object("RGLADIATOR/RGLADIATOR.ENT.XML", 0 ,300);
+    
     myGame->objects.push_back(*gld);
     myGame->objects.push_back(*elt);
     myGame->objects.push_back(*def);
