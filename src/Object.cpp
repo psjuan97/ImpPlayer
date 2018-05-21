@@ -88,13 +88,18 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
     
     
     //Lets Open the images and save it in 
-    for(int i=0; i<_Images.size(); i++){
-        Log::console->info("file: {} " , _Images[i].file);
+    
+    
+    for (auto &it : _Images){
+        Log::console->warn("fileNAME: {} " , it.second.file); // Se esta generando una Images_ VAcia
 
-        _Images[i].setTexture();
-        _Images[i].generateRects(); // aqui se generan los mold
-        
-    }
+        it.second.setTexture();
+        it.second.generateRects();
+    } 
+    
+    
+    
+
     
     classElem = doc.FirstChildElement("entity")->FirstChildElement("anims");
 
