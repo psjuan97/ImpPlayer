@@ -1,5 +1,9 @@
 # ImpvPlayer
-Imperium Player repo
+
+## Media
+<img src="https://raw.githubusercontent.com/psjuan97/ImpPlayer/master/media/betaAnim.gif">
+
+## Info
 
 Para el desarollo estoy usando codelite pero en realidad no es necesario.
 
