@@ -2,10 +2,16 @@
 
 #include <SFML/System/Vector2.hpp>
 
+struct coord{
+    int x;
+    int y;    
+};
+
+
 
 class Vector
 {
-private:
+public:
     sf::Vector2f _vec;
 
 public:

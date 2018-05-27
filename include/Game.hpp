@@ -26,7 +26,9 @@ public:
 	void processInput();
 	void update();
 	void render();
-    
+    void close(){
+            engine->close();
+    };
     void loop();
 private:
 	Game();

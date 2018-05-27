@@ -2,6 +2,8 @@
 #include <Render/RendererEngine.hpp>
 #include <Log.hpp>
 #include <Clock.hpp>
+#include <InputController.hpp>
+
 impvm::Game* impvm::Game::ms_instance = nullptr;
 
 impvm::Game::Game(){
@@ -67,20 +69,27 @@ void impvm::Game::loop(){
     objects[1].setDirection(Orientation::NORTH);
     objects[2].setDirection(Orientation::NORTHEAST);
 
+#include <SFML/System/Vector2.hpp>
 
-    Vector destiny(400,400);
+   // Vector destiny(400,400);
+    sf::Vector2f destiny(600,95);
+    sf::Vector2f destiny2(400,75);
 
     objects[0]._movements.push(destiny);
-   // objects[0].setStatus("Idle");
+    objects[0]._movements.push(destiny2);
 
+   // objects[0].setStatus("Idle");
 
     int c = 0;
 
     while(engine->ready() ){
 
+        
+       InputController::getInstance()->callEvents();
+        
         engine->clear();
         
-        update();
+       // update();
         
 
         uint32_t currentTime = fpsClk.getPassedTime(); 
@@ -89,12 +98,12 @@ void impvm::Game::loop(){
         engine->drawText("FPS: " + std::to_string(fps));
         
         for(int i=0; i<objects.size();i++){
-            Log::console->info("---Draw: ");
+           // Log::console->info("---Draw: ");
 
             engine->drawObject(&objects[i]);
             
           /// if(c == 100){
-                          Log::console->info("---Play: ");
+                          //Log::console->info("---Play: ");
 
                 objects[i].Play(currentTime);
                // c = 0;
@@ -102,6 +111,8 @@ void impvm::Game::loop(){
            // c++;
            
            objects[i].Action();
+            objects[i].move();
+
             
         }
         

@@ -17,6 +17,8 @@
     <File Name="src/main.cpp"/>
     <File Name="src/Game.cpp"/>
     <VirtualDirectory Name="Render">
+      <File Name="src/Render/InputLogic.cpp"/>
+      <File Name="src/Render/InputController.cpp"/>
       <File Name="src/Render/SpriteSheet.cpp"/>
       <File Name="src/Render/RendererEngine.cpp"/>
       <File Name="src/Render/WRendererSFML.cpp"/>
@@ -37,6 +39,8 @@
     <File Name="include/Object.hpp"/>
     <File Name="include/Game.hpp"/>
     <VirtualDirectory Name="Render">
+      <File Name="include/Render/InputLogic.hpp"/>
+      <File Name="include/Render/InputController.hpp"/>
       <File Name="include/Render/SpriteSheet.hpp"/>
       <File Name="include/Render/RendererEngine.hpp"/>
       <File Name="include/Render/WRendererSFML.hpp"/>

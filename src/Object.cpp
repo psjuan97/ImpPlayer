@@ -37,6 +37,11 @@ void Object::setStatus(std::string status){
     //buscar la animacion correspondiente y asignar
     _sheet = _animations[status].getImage();
     _rect = _animations[status].getActualFrame();
+    
+    //TODO fix
+    setDirection(_direction);
+    
+   // Log::console->info("    DIRECTION: {} " ,_folder);
 }
 
 
@@ -46,9 +51,8 @@ void Object::setStatus(std::string status){
  */
 Object::Object(std::string filename, int x, int y){
 
-this->x = x;
-this->y = y;
-
+       this->x = x -72;
+        this->y = y -95;
 _folder = filename.substr(0, filename.find_last_of('/') +1);
 
     Log::console->info("    FOLDER: {} " ,_folder);
@@ -100,6 +104,25 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
     
     
 
+    classElem = doc.FirstChildElement("entity")->FirstChildElement("layers");
+
+        Log::console->info("---------------Layers--------------" );
+ 
+        
+    for (const XMLElement* child = classElem->FirstChildElement(); child!=0; child=child->NextSiblingElement()){
+
+
+        child->QueryIntAttribute("offsetx", &_offsetx);
+        child->QueryIntAttribute("offsety", &_offsety);
+        break;
+        Log::console->info("offsetx: {} " , _offsetx);
+
+
+
+
+    }
+    
+    
     
     classElem = doc.FirstChildElement("entity")->FirstChildElement("anims");
 
@@ -126,7 +149,7 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
                 Log::console->info("image: {} " , imageID);
                 
                 tmpAnim.setImage(&_Images[imageID]);
-                tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]); // el 0 se cambiara segun el sentido/orientacion
+              //  tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]); // el 0 se cambiara segun el sentido/orientacion
     
                 break;
             }
@@ -136,6 +159,7 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
         }
         
         _animations[name] = tmpAnim;
+        _direction = Orientation::NORTH;
         setStatus(name);
     
 

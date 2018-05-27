@@ -7,6 +7,8 @@ class WRendererSFML: public WRenderer{
 public:
     void init();
     void update();
+        void close();
+
     void destroy();
     void drawText(std::string str) ;
     void drawObject(Object* str) ;
@@ -18,6 +20,8 @@ public:
 private:
     sf::RenderWindow* _window;
     sf::Font* _font;
+    sf::Event* _event;
+
     bool _ready = true;
 
 };
