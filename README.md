@@ -35,8 +35,8 @@ Controles del raton<br>
 Propiedades dinamicas XML, MAP <br>
 Tipo de datos nativos(¿que leo del xml, float int string?)<br>
 Cambiar XML, ent -> sc <br>
-:heavy_check_mark: Moviento basado en vectores
-Estructuras, cuarteles
-Barra superior con informacion basica/ icono de unidad y datos de unidad
+:heavy_check_mark: Moviento basado en vectores<br>
+Estructuras, cuarteles<br>
+Barra superior con informacion basica/ icono de unidad y datos de unidad<br>
 ## Info
 
