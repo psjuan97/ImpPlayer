@@ -26,16 +26,17 @@ Y ya tendremos el proyecto listo para compilar y ejecutar
 Ten encuenta que en necesario que tengas instalado SFML
 
 
-## Tareas:
+## Iteracion 1:
 Sistema de capas, para dar soporte a las sombras<br>
 Mejora de animaciones, mirar XML, velocidad FRAME a FRAME<br>
 Factoria para generar objectos (unidades)<br>
 Controles del raton<br>
-Sistema de direcciones, para cambiar las animaciones, arriba, abajo, derecha etc <br>
+:heavy_check_mark: Sistema de direcciones, para cambiar las animaciones, arriba, abajo, derecha etc <br>
 Propiedades dinamicas XML, MAP <br>
 Tipo de datos nativos(¿que leo del xml, float int string?)<br>
 Cambiar XML, ent -> sc <br>
-Moviento basado en vectores
-
+:heavy_check_mark: Moviento basado en vectores
+Estructuras, cuarteles
+Barra superior con informacion basica/ icono de unidad y datos de unidad
 ## Info
-https://blog.redbluegames.com/animating-top-down-2d-games-in-unity-5e966b81790e -> Direcciones <br>
+
