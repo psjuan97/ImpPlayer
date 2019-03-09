@@ -6,6 +6,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../../${PROJECT_NAME}/bin)
 SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
+set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
 ## Set our project name
 project(${PROJECT_NAME})
@@ -13,7 +15,7 @@ project(${PROJECT_NAME})
 #Bring the headers, such as Student.h into the project
 include_directories("include" "include/Render" "include/Utils")
 
-include_directories("lib/spdlog")
+include_directories("lib/")
 include_directories("lib/tinyxml2")
 
 
@@ -25,6 +27,7 @@ add_executable(${PROJECT_NAME} ${SRCS})
 
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
+
 
 #Find any version 2.X of SFML
 #See the FindSFML.cmake file for additional details and instructions

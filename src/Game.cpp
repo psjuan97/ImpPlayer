@@ -61,13 +61,10 @@ void impvm::Game::loop(){
     uint32_t lastTime = 0;
             
     objects[0].setStatus("walk");
-    objects[1].setStatus("Attack");
-    objects[2].setStatus("Die");
-    
+
         
     objects[0].setDirection(Orientation::SOUTH);
-    objects[1].setDirection(Orientation::NORTH);
-    objects[2].setDirection(Orientation::NORTHEAST);
+
 
 #include <SFML/System/Vector2.hpp>
 

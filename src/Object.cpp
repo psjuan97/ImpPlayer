@@ -149,7 +149,7 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
                 Log::console->info("image: {} " , imageID);
                 
                 tmpAnim.setImage(&_Images[imageID]);
-              //  tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]); // el 0 se cambiara segun el sentido/orientacion
+              tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]); // el 0 se cambiara segun el sentido/orientacion
     
                 break;
             }
