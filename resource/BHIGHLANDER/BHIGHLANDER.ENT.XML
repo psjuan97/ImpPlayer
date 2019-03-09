@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="../entity.xsl"?>
+
+<entity name="BHighlander" type="vx/unit" variations="8" pass_file="BHighlander.pass">
+<images>
+<image idx="1" file="Attack" drawmode="player_color" remaping="none" rows="15" columns="8"/>
+<image idx="2" file="Attack_shadow" drawmode="shadow" remaping="none" rows="15" columns="8"/>
+<image idx="3" file="Die" drawmode="player_color" remaping="none" rows="20" columns="8"/>
+<image idx="4" file="Die_shadow" drawmode="shadow" remaping="none" rows="20" columns="8"/>
+<image idx="5" file="idle" drawmode="player_color" remaping="none" rows="7" columns="8"/>
+<image idx="6" file="idle_shadow" drawmode="shadow" remaping="none" rows="7" columns="8"/>
+<image idx="7" file="Taunt" drawmode="player_color" remaping="none" rows="7" columns="8"/>
+<image idx="8" file="Taunt_shadow" drawmode="shadow" remaping="none" rows="7" columns="8"/>
+<image idx="9" file="ToAttack" drawmode="player_color" remaping="none" rows="6" columns="8"/>
+<image idx="10" file="ToAttack_shadow" drawmode="shadow" remaping="none" rows="6" columns="8"/>
+<image idx="11" file="walk" drawmode="player_color" remaping="none" rows="14" columns="8"/>
+<image idx="12" file="walk_shadow" drawmode="shadow" remaping="none" rows="14" columns="8"/>
+</images>
+<points>
+</points>
+<layers>
+<layer idx="1" name="unit" image="1" z="1000" offsetx="-93" offsety="-116" sortoffsetx="0" sortoffsety="0" xray="0"/>
+<layer idx="2" name="unit_shadow" image="2" z="800" offsetx="-93" offsety="-116" sortoffsetx="0" sortoffsety="0" xray="0"/>
+</layers>
+<states>
+<state idx="1" name="idle" image_idx="0" image_row="1" offsetx="-93" offsety="-116" anim_idx="13" anim_frame="1"/>
+<state idx="2" name="attack" image_idx="0" image_row="1" offsetx="-93" offsety="-116" anim_idx="5" anim_frame="1"/>
+</states>
+<anims>
+<anim idx="1" name="walk" startstate="1" endstate="1" frames="16" duration="924" default_duration="0" action_time="0" step="57">
+<replace layer="1" image="11" offsetx="-93" offsety="-116"/>
+<replace layer="2" image="12" offsetx="-93" offsety="-116"/>
+<frame idx="1" duration="0"/>
+<frame idx="2" duration="66"/>
+<frame idx="3" duration="66"/>
+<frame idx="4" duration="66"/>
+<frame idx="5" duration="66"/>
+<frame idx="6" duration="66"/>
+<frame idx="7" duration="66"/>
+<frame idx="8" duration="66"/>
+<frame idx="9" duration="66"/>
+<frame idx="10" duration="66"/>
+<frame idx="11" duration="66"/>
+<frame idx="12" duration="66"/>
+<frame idx="13" duration="66"/>
+<frame idx="14" duration="66"/>
+<frame idx="15" duration="66"/>
+<frame idx="16" duration="0"/>
+</anim>
+<anim idx="5" name="Attack" startstate="2" endstate="2" frames="17" duration="990" default_duration="0" action_time="462" step="0">
+<replace layer="1" image="1" offsetx="-93" offsety="-116"/>
+<replace layer="2" image="2" offsetx="-93" offsety="-116"/>
+<frame idx="1" duration="0"/>
+<frame idx="2" duration="66"/>
+<frame idx="3" duration="66"/>
+<frame idx="4" duration="66"/>
+<frame idx="5" duration="66"/>
+<frame idx="6" duration="66"/>
+<frame idx="7" duration="66"/>
+<frame idx="8" duration="66"/>
+<frame idx="9" duration="66"/>
+<frame idx="10" duration="66"/>
+<frame idx="11" duration="66"/>
+<frame idx="12" duration="66"/>
+<frame idx="13" duration="66"/>
+<frame idx="14" duration="66"/>
+<frame idx="15" duration="66"/>
+<frame idx="16" duration="66"/>
+<frame idx="17" duration="0"/>
+</anim>
+<anim idx="9" name="Die" startstate="1" endstate="1" frames="22" duration="16424" default_duration="0" action_time="0" step="0">
+<replace layer="1" image="3" offsetx="-93" offsety="-116"/>
+<replace layer="2" image="4" offsetx="-93" offsety="-116"/>
+<frame idx="1" duration="0"/>
+<frame idx="2" duration="66"/>
+<frame idx="3" duration="66"/>
+<frame idx="4" duration="66"/>
+<frame idx="5" duration="66"/>
+<frame idx="6" duration="66"/>
+<frame idx="7" duration="66"/>
+<frame idx="8" duration="66"/>
+<frame idx="9" duration="66"/>
+<frame idx="10" duration="66"/>
+<frame idx="11" duration="66"/>
+<frame idx="12" duration="66"/>
+<frame idx="13" duration="66"/>
+<frame idx="14" duration="66"/>
+<frame idx="15" duration="66"/>
+<frame idx="16" duration="500"/>
+<frame idx="17" duration="1000"/>
+<frame idx="18" duration="2000"/>
+<frame idx="19" duration="4000"/>
+<frame idx="20" duration="4000"/>
+<frame idx="21" duration="4000"/>
+<frame idx="22" duration="0"/>
+</anim>
+<anim idx="13" name="idle" startstate="1" endstate="1" frames="9" duration="462" default_duration="0" action_time="0" step="0">
+<replace layer="1" image="5" offsetx="-93" offsety="-116"/>
+<replace layer="2" image="6" offsetx="-93" offsety="-116"/>
+<frame idx="1" duration="0"/>
+<frame idx="2" duration="66"/>
+<frame idx="3" duration="66"/>
+<frame idx="4" duration="66"/>
+<frame idx="5" duration="66"/>
+<frame idx="6" duration="66"/>
+<frame idx="7" duration="66"/>
+<frame idx="8" duration="66"/>
+<frame idx="9" duration="0"/>
+</anim>
+<anim idx="18" name="ToIdle" startstate="2" endstate="1" frames="8" duration="396" default_duration="0" action_time="0" step="0">
+<replace layer="1" image="9" offsetx="-93" offsety="-116"/>
+<replace layer="2" image="10" offsetx="-93" offsety="-116"/>
+<frame idx="1" duration="0"/>
+<frame idx="2" duration="66"/>
+<frame idx="3" duration="66"/>
+<frame idx="4" duration="66"/>
+<frame idx="5" duration="66"/>
+<frame idx="6" duration="66"/>
+<frame idx="7" duration="66"/>
+<frame idx="8" duration="0"/>
+</anim>
+<anim idx="19" name="ToAttack" startstate="1" endstate="2" frames="8" duration="396" default_duration="0" action_time="0" step="0">
+<replace layer="1" image="7" offsetx="-93" offsety="-116"/>
+<replace layer="2" image="8" offsetx="-93" offsety="-116"/>
+<frame idx="1" duration="0"/>
+<frame idx="2" duration="66"/>
+<frame idx="3" duration="66"/>
+<frame idx="4" duration="66"/>
+<frame idx="5" duration="66"/>
+<frame idx="6" duration="66"/>
+<frame idx="7" duration="66"/>
+<frame idx="8" duration="0"/>
+</anim>
+<anim idx="20" name="Taunt" startstate="1" endstate="1" frames="9" duration="994" default_duration="0" action_time="0" step="0">
+<replace layer="1" image="7" offsetx="-93" offsety="-116"/>
+<replace layer="2" image="8" offsetx="-93" offsety="-116"/>
+<frame idx="1" duration="0"/>
+<frame idx="2" duration="142"/>
+<frame idx="3" duration="142"/>
+<frame idx="4" duration="142"/>
+<frame idx="5" duration="142"/>
+<frame idx="6" duration="142"/>
+<frame idx="7" duration="142"/>
+<frame idx="8" duration="142"/>
+<frame idx="9" duration="0"/>
+</anim>
+</anims>
+</entity>
