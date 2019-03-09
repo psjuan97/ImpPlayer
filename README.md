@@ -1,7 +1,14 @@
 # ImpvPlayer
 
 ## Media
+## Linux
 <img src="https://raw.githubusercontent.com/psjuan97/ImpPlayer/master/media/betaAnim.gif">
+
+## Windows
+<img src="https://raw.githubusercontent.com/psjuan97/ImpPlayer/master/resource/win.jpg">
+
+## Mac Os X
+<img src="https://raw.githubusercontent.com/psjuan97/ImpPlayer/master/resource/mac.jpg">
 
 ## Info
 
@@ -27,6 +34,7 @@ Ten encuenta que en necesario que tengas instalado SFML
 
 
 ## Iteracion 1:
+Cambiar XML a LUA (o json y js)
 Sistema de capas, para dar soporte a las sombras<br>
 Mejora de animaciones, mirar XML, velocidad FRAME a FRAME<br>
 Factoria para generar objectos (unidades)<br>
