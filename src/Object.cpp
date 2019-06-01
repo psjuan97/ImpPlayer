@@ -1,13 +1,12 @@
 #include <Object.hpp>
 #include "tinyxml2.h"
-#include <Log.hpp>
 
 using namespace tinyxml2;
 using namespace impvm;
 
 void Object::Play(uint32_t time){
     
-    if (time - _animations[_status]._lastTime >= _animations[_status].getVelocity() )
+    if (time - _animations[_status]._lastTime >= _animations[_status].getActualVelocity() )
     {
         //si ha pasado tiempo suficiente next frame
     this->_animations[_status].nextFrame();
@@ -45,22 +44,39 @@ void Object::setStatus(std::string status){
 }
 
 
+
+Object::Object(std::string filename, int x, int y){
+          this->x = x -72;
+        this->y = y -95;
+    Log::console->info("    FOLDER: {} " ,_folder);
+
+
+tinyxml2::XMLDocument doc;
+if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
+    tinyxml2::XMLElement* classElem = doc.FirstChildElement("class");
+    const char* entiFilename;
+    entiFilename = classElem->Attribute ("entity");
+    loadEntity(std::string(entiFilename));
+
+}
+
+}
+
 /**
  * @brief Default Construcor of Object
  * @return nice object with x and y set to 0
  */
-Object::Object(std::string filename, int x, int y){
+void Object::loadEntity(std::string filename){
 
-       this->x = x -72;
-        this->y = y -95;
-_folder = filename.substr(0, filename.find_last_of('/') +1);
+ _folder = filename.substr(0, filename.find_last_of('/') +1);
 
-    Log::console->info("    FOLDER: {} " ,_folder);
+
 
 tinyxml2::XMLDocument doc;
 if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
     tinyxml2::XMLElement* classElem = doc.FirstChildElement("entity")->FirstChildElement("images");
 
+    Log::console->info("procces EntFile" );
 
     //std::unordered_map<std::string,std::string> mymap;
 
@@ -135,14 +151,15 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
 
         //Animations load
         Animation tmpAnim = Animation();
-        tmpAnim.setVelocity(66);
 
-
+        // TODO ahora se ignoran las sombras
+        bool sombras = true;
         for (const XMLElement* subChild = child->FirstChildElement(); subChild!=0; subChild=subChild->NextSiblingElement()){
         //replace and frame
             Log::console->info("subChild->Name(): {} " , subChild->Name());
 
-            if(std::string("replace").compare( subChild->Name()) == 0 ){
+            if(std::string("replace").compare( subChild->Name()) == 0 && sombras){
+                sombras = false;
                  Log::console->info("Enter " );
                 int imageID;
                 subChild->QueryIntAttribute("image", &imageID);
@@ -151,7 +168,18 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
                 tmpAnim.setImage(&_Images[imageID]);
               tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]); // el 0 se cambiara segun el sentido/orientacion
     
-                break;
+              //  break;
+            }else if(std::string("frame").compare( subChild->Name()) == 0 ){
+                int idx,duration;
+                subChild->QueryIntAttribute("idx", &idx);
+                Log::console->info("idx: {} " , idx);
+
+                subChild->QueryIntAttribute("duration", &duration);
+                Log::console->info("duration: {} " , duration);
+
+                tmpAnim.addVelocity(duration);
+
+    
             }
         
 
@@ -167,6 +195,10 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
     
 
     
+}else{
+
+        Log::console->error("Error al abrir el fichero: {} " ,_folder);
+
 }
 
 }
@@ -178,3 +210,56 @@ void Object::setDirection(Orientation direction) // TODO posible fix new directi
     _animations[_status].setFrames(newDirection);
     //tmpAnim.setFrames(&_Images[imageID]._mold[(int)Orientation::NORTH]);
 }
+
+
+  void Object::move(){
+        if(!_movements.empty()){
+            sf::Vector2f Destination = _movements.top();
+            setStatus("walk");
+
+          //  impvm::Log::console->warn("Destination.x = {}", Destination.x);
+          //  impvm::Log::console->warn("Destination.y = {}", Destination.x);
+
+            sf::Vector2f Origin(x,y);
+            sf::Vector2f Direction = Destination - Origin;
+            float Speed = 1.5f;
+
+
+            impvm::Log::console->info("x {}", x );
+            impvm::Log::console->info("y {}", y );
+            
+                        impvm::Log::console->info("----------" );
+
+            impvm::Log::console->info("Origin x {}", Origin.x );
+            impvm::Log::console->info("Origin y {}", Origin.y );
+   
+            float Distance = sqrt( (Destination.x - Origin.x) * (Destination.x - Origin.x) + (Destination.y - Origin.y) *  (Destination.y - Origin.y) );
+            Direction /= Distance;
+            
+             sf::Vector2f finalVector = Origin + Direction * Speed;
+            
+           // impvm::Log::console->warn("finalVector.x = {}", finalVector.x);
+           // impvm::Log::console->warn("finalVector.y = {}", finalVector.x);
+             
+             if(Distance <= 1){
+                _movements.pop();
+            impvm::Log::console->warn("Poping movement");
+
+            }else{
+                
+                this->x = finalVector.x;
+                this->y = finalVector.y;
+                
+                int compass = (((int)round( ( atan2(Destination.y - Origin.y, Destination.x - Origin.x) - (PI/2)) / ( (float)(2*PI) / 8) )) + 8) % 8;
+
+                setDirection( (Orientation)compass);
+
+
+                }
+
+        }else{
+            setStatus("idle");
+
+            //impvm::Log::console->error("Empty Stack of movement");
+        }
+    }

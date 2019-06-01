@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 2.8)
 
 ## Use the variable PROJECT_NAME for changing the target name
 set( PROJECT_NAME "ImpPlayer" )
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../../${PROJECT_NAME}/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -O0")
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 

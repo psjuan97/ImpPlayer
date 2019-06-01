@@ -11,7 +11,7 @@ void WRendererSFML::init()
 {
 
 
-this->_window = new RenderWindow(sf::VideoMode(800, 600), "SFML window");
+this->_window = new RenderWindow(sf::VideoMode(800, 600), "Imperium Player");
 if(_window != nullptr){
     Log::info("SFML Renderer is UP");
      _window->setFramerateLimit(60);

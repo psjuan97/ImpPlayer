@@ -6,17 +6,17 @@
 
 class Animation{
 private:
-    int _velocity;
     SpriteSheet* _image;
     std::vector<Rect> *_frames;
+    std::vector<int> _velocity;
     int iFrame = 0;
 public:
     int getIFrame(){
        return iFrame; 
     }
 
-    void setVelocity(int vel){_velocity = vel;};
-    int getVelocity(){return _velocity;};
+    void addVelocity(int vel){_velocity.push_back(vel);};
+    int getActualVelocity(){return _velocity[iFrame];};
     
     void setFrames(std::vector<Rect> * frames){_frames = frames;};
     std::vector<Rect> * getFrames(){return _frames;};
