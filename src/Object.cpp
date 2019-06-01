@@ -48,7 +48,6 @@ void Object::setStatus(std::string status){
 Object::Object(std::string filename, int x, int y){
           this->x = x -72;
         this->y = y -95;
-    Log::console->info("    FOLDER: {} " ,_folder);
 
 
 tinyxml2::XMLDocument doc;
@@ -69,10 +68,12 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
 void Object::loadEntity(std::string filename){
 
  _folder = filename.substr(0, filename.find_last_of('/') +1);
+    Log::console->info("    FOLDER: {} " ,_folder);
 
 
 
 tinyxml2::XMLDocument doc;
+Log::console->info("EntFile.xml = : {} " ,filename.c_str());
 if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
     tinyxml2::XMLElement* classElem = doc.FirstChildElement("entity")->FirstChildElement("images");
 
@@ -197,7 +198,7 @@ if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
     
 }else{
 
-        Log::console->error("Error al abrir el fichero: {} " ,_folder);
+        Log::console->error("Error al abrir el fichero: {} " ,filename);
 
 }
 
