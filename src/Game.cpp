@@ -84,33 +84,22 @@ void impvm::Game::loop(){
         
        InputController::getInstance()->callEvents();
         
-        engine->clear();
-        
-       // update();
-        
+        engine->clear();       
 
         uint32_t currentTime = fpsClk.getPassedTime(); 
         uint32_t fps = 1000.f / (currentTime - lastTime);
         lastTime = currentTime;            
         engine->drawText("FPS: " + std::to_string(fps));
         
+        engine->drawHud();
+
         for(int i=0; i<objects.size();i++){
-           // Log::console->info("---Draw: ");
 
             engine->drawObject(&objects[i]);
-            
-          /// if(c == 100){
-                          //Log::console->info("---Play: ");
 
-                objects[i].Play(currentTime);
-               // c = 0;
-           // }
-           // c++;
-           
-           objects[i].Action();
+            objects[i].Play(currentTime);
+            objects[i].Action();
             objects[i].move();
-
-            
         }
         
         engine->flush();

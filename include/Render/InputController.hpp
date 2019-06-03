@@ -6,6 +6,11 @@
 #include <string>
 #include <Game.hpp>
 #include <InputLogic.hpp>
+
+using namespace impvm;
+
+
+
 enum InputType
 {
     KeyboardInput,
@@ -31,7 +36,7 @@ private:
     sf::RenderWindow* _window;
     std::map<std::string,MyKeys> _Keys;
 
-    InputLogic _logic;
+    impvm::InputLogic _logic;
 
 
 public:

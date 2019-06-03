@@ -22,6 +22,7 @@
  */
 class Object{
 public:
+    SpriteSheet *icon;
     float y;
     float x;
     

@@ -3,8 +3,15 @@
 #include <Object.hpp>
 #include <Game.hpp>
 
+
+namespace impvm
+{
+
+
+
 class InputLogic
 {
+
 private:
     
 
@@ -21,3 +28,4 @@ void moveObject();
 
 };
 
+}

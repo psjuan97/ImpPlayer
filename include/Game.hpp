@@ -3,14 +3,19 @@
 #include <Render/WRenderer.hpp>
 #include <Object.hpp>
 #include <vector>
+#include <Render/InputLogic.hpp>
 
 
 namespace impvm
 {
 
+
 class Game
 {
+
 private:
+	friend class InputLogic;
+
 	static Game* ms_instance;
     WRenderer *engine;
     
@@ -30,6 +35,7 @@ public:
             engine->close();
     };
     void loop();
+
 private:
 	Game();
 	~Game();

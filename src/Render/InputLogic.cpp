@@ -1,6 +1,7 @@
 #include "InputLogic.hpp"
 #include <InputController.hpp>
 #include <Log.hpp>
+using namespace impvm;
 
 
 InputLogic::InputLogic()
@@ -62,11 +63,15 @@ void InputLogic::selectObject(){
         if(isSpriteClicked( &impvm::Game::Instance()->objects[i]  )){
             _selecteds.push_back(&impvm::Game::Instance()->objects[i]);
             
+			 impvm::Game::Instance()->engine->setFocusObject(&impvm::Game::Instance()->objects[i]);
             impvm::Log::console->warn("Unidad Selecionada" );
 
-            break;
+            return;
         }
     }
+
+	impvm::Game::Instance()->engine->setFocusObject(nullptr);
+
 
 }
 				

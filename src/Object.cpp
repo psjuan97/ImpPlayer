@@ -46,18 +46,41 @@ void Object::setStatus(std::string status){
 
 
 Object::Object(std::string filename, int x, int y){
-          this->x = x -72;
-        this->y = y -95;
+    this->x = x -72;
+    this->y = y -95;
+    icon = nullptr;
 
-
-tinyxml2::XMLDocument doc;
-if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
+    tinyxml2::XMLDocument doc;
+    if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
+        tinyxml2::XMLElement* classElem = doc.FirstChildElement("class");
+        const char* entiFilename;
+        entiFilename = classElem->Attribute ("entity");
+        loadEntity(std::string(entiFilename));
+    }
     tinyxml2::XMLElement* classElem = doc.FirstChildElement("class");
-    const char* entiFilename;
-    entiFilename = classElem->Attribute ("entity");
-    loadEntity(std::string(entiFilename));
 
-}
+            Log::console->info("Getting atributes.. " );
+
+    for (const XMLElement* child = classElem->FirstChildElement(); child!=0; child=child->NextSiblingElement()){
+        try{
+            std::string icon = child->Attribute("icon");
+                Log::console->info("icon: {} " ,icon);
+
+            SpriteSheet *Tmpsheet = new SpriteSheet();    
+            Tmpsheet->file = icon;
+            Tmpsheet->rows = 1;
+            Tmpsheet->columns = 1;
+            Tmpsheet->setTexture();
+            Tmpsheet->generateRects();
+
+            this->icon = Tmpsheet;
+
+        }catch(...){
+
+        }
+    }
+
+
 
 }
 

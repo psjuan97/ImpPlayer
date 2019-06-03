@@ -9,26 +9,23 @@ using namespace impvm;
 
 void WRendererSFML::init()
 {
+    this->_window = new RenderWindow(sf::VideoMode(1920, 1080), "Imperium Player");
+    if(_window != nullptr){
+        Log::info("SFML Renderer is UP");
+        _window->setFramerateLimit(60);
+        _font = new sf::Font();
+        _event = new sf::Event();
+        InputController* Input = InputController::getInstance();
+        Input->init(_window);
+        if (!_font->loadFromFile("game.ttf"))
+        {
+            Log::error("Error loading font");
+        }
+    }else{
+        Log::error("Error initializing SFML Renderer");
 
-
-this->_window = new RenderWindow(sf::VideoMode(800, 600), "Imperium Player");
-if(_window != nullptr){
-    Log::info("SFML Renderer is UP");
-     _window->setFramerateLimit(60);
-     _font = new sf::Font();
-     _event = new sf::Event();
-     InputController* Input = InputController::getInstance();
-     Input->init(_window);
-    if (!_font->loadFromFile("game.ttf"))
-    {
-        Log::error("Error loading font");
     }
-}else{
-    Log::error("Error initializing SFML Renderer");
-
-}
-    
-    
+       
 }
 
 
@@ -92,6 +89,36 @@ void WRendererSFML::drawObject(Object* str){
 
 
 }
+
+
+
+void WRendererSFML::drawHud(){
+
+    if(this->_focusObject != nullptr){
+            Log::console->info("Drawing icon");
+
+           sf::IntRect rectangulo = sf::IntRect(_focusObject->icon->_mold[0][0].x, _focusObject->icon->_mold[0][0].y, _focusObject->icon->_mold[0][0].w, _focusObject->icon->_mold[0][0].h);
+
+            _focusObject->icon->_baseSheet->setTextureRect(rectangulo);
+            _focusObject->icon->_baseSheet->setPosition(500, 500 ); //change place, very slow
+        // Log::console->info("position x {}", str->x );
+        //  Log::console->info("position y {}", str->y );
+            _window->draw( *_focusObject->icon->_baseSheet);
+    
+        }
+
+    //if object is set draw icon, 
+    //else none
+
+}
+
+
+void WRendererSFML::setFocusObject(Object* obj){
+    this->_focusObject = obj;
+
+}
+
+
 
 
 void WRendererSFML::drawText(std::string str){
