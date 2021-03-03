@@ -9,7 +9,7 @@ namespace spd = spdlog;
 int main(int argc, char* argv[]) {
     
     Game* myGame = Game::Instance();
-    Object *def = new Object("BHIGHLANDER.SC.XML",300,300);
+    Object *def = new Object("resource/BHIGHLANDER.SC.XML",300,300);
 
     
     myGame->objects.push_back(*def);
