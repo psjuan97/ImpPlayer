@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string> 
 #include <Log.hpp>
+#include <Util.hpp>
 
 using namespace impvm;
 
@@ -38,9 +39,19 @@ void SpriteSheet::setTexture(){
     
     sf::Image image;
     sf::Texture *texture =  new sf::Texture();
+
+    std::vector<std::string> ruta(stringToVector('/', file));
     
-    std::string imageName = file+".RLE.BMP"; 
-    std::transform(imageName.begin(), imageName.end(), imageName.begin(), ::toupper);
+    // lo que viene del xml está en minusculas, pero el archivo correspondiente el mayus
+    std::string last = ruta[ruta.size() - 1];
+    std::transform(last.begin(), last.end(), last.begin(), ::toupper);
+
+    std::string imageName = "";
+    for (auto i = 0; i < ruta.size()-1; ++i) {
+        imageName += ruta[i] + '/';
+    }
+
+    imageName += last+".RLE.BMP";    
 
     //texture->loadFromFile(imageName.c_str());
     image.loadFromFile(imageName.c_str());
