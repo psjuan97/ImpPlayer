@@ -1,5 +1,6 @@
 #include <Object.hpp>
 #include "tinyxml2.h"
+#include "EntityLoader.hpp"
 
 using namespace tinyxml2;
 using namespace impvm;
@@ -48,38 +49,47 @@ void Object::setStatus(std::string status){
 Object::Object(std::string filename, int x, int y){
     this->x = x -72;
     this->y = y -95;
-    icon = nullptr;
 
-    tinyxml2::XMLDocument doc;
-    if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
-        tinyxml2::XMLElement* classElem = doc.FirstChildElement("class");
-        const char* entiFilename;
-        entiFilename = classElem->Attribute ("entity");
-        loadEntity(std::string(entiFilename));
-    }
-    tinyxml2::XMLElement* classElem = doc.FirstChildElement("class");
+    
+    
+    std::string entityFile = "";
+    EntityLoader el;
+    entityFile = el.getEntityRoute(filename);
+    
+    loadEntity(entityFile);
 
-            Log::console->info("Getting atributes.. " );
 
-    for (const XMLElement* child = classElem->FirstChildElement(); child!=0; child=child->NextSiblingElement()){
-        try{
-            std::string icon = child->Attribute("icon");
-                Log::console->info("icon: {} " ,icon);
+    //icon = nullptr;
+//
+    //tinyxml2::XMLDocument doc;
+    //if(doc.LoadFile(filename.c_str()) == tinyxml2::XML_SUCCESS){
+    //    tinyxml2::XMLElement* classElem = doc.FirstChildElement("class");
+    //    const char* entiFilename;
+    //    entiFilename = classElem->Attribute ("entity");
+    //    loadEntity(std::string(entiFilename));
+    //}
+    //tinyxml2::XMLElement* classElem = doc.FirstChildElement("class");
 
-            SpriteSheet *Tmpsheet = new SpriteSheet();    
-            Tmpsheet->file = icon;
-            Tmpsheet->rows = 1;
-            Tmpsheet->columns = 1;
-            Tmpsheet->setTexture();
-            Tmpsheet->generateRects();
+    //Log::console->info("Getting atributes.. " );
 
-            this->icon = Tmpsheet;
-
-        }catch(...){
-
-        }
-    }
-
+    //for (const XMLElement* child = classElem->FirstChildElement(); child!=0; child=child->NextSiblingElement()){
+    //    try{
+    //        std::string icon = child->Attribute("icon");
+    //            Log::console->info("icon: {} " ,icon);
+//
+    //        SpriteSheet *Tmpsheet = new SpriteSheet();    
+    //        Tmpsheet->file = icon;
+    //        Tmpsheet->rows = 1;
+    //        Tmpsheet->columns = 1;
+    //        Tmpsheet->setTexture();
+    //        Tmpsheet->generateRects();
+//
+    //        this->icon = Tmpsheet;
+//
+    //    }catch(...){
+//
+    //    }
+    //}
 
 
 }
