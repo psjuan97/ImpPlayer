@@ -1,4 +1,4 @@
-<class id="BHighlander" cpp_class="CVXUnit" parent="Melee" entity="units/BHighlander/BHighlander.ent.xml">
+<class id="BHighlander" cpp_class="CVXUnit" parent="Melee" entity="resource/units/BHIGHLANDER/BHIGHLANDER.ENT.XML">
 
 	<properties race="Britain"/>
 	<properties maxhealth="500"/>
@@ -6,7 +6,7 @@
 	<properties speed="80"/>
 	<properties unit_specials="Deflection"/>
 
-	<properties icon="gameres/icons/BHighlander.bmp"/>
+	<properties icon="resource/gameres/icons/BHighlander.bmp"/>
 	<properties display_name="Highlander" display_name_plural="Highlanders"/>
 	<properties help="contents/units/BHighlander"/>
 	<properties edittree_pos="Units/Britain/Highlander"/>

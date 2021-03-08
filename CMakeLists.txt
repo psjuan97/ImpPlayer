@@ -5,7 +5,7 @@ set( PROJECT_NAME "ImpPlayer" )
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ./bin)
 SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g -O0")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
@@ -34,7 +34,8 @@ set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
 
 find_package (Threads)
 find_package(SFML 2 REQUIRED network audio graphics window system)
-if(SFML_FOUND)
-  include_directories(${SFML_INCLUDE_DIR})
-  target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
-endif()
+find_package (Python3 COMPONENTS Interpreter Development REQUIRED)
+find_package(PythonLibs REQUIRED)
+
+include_directories(${PYTHON_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} ${PYTHON_LIBRARIES})

@@ -17,7 +17,7 @@ void WRendererSFML::init()
         _event = new sf::Event();
         InputController* Input = InputController::getInstance();
         Input->init(_window);
-        if (!_font->loadFromFile("game.ttf"))
+        if (!_font->loadFromFile("resource/game.ttf"))
         {
             Log::error("Error loading font");
         }
